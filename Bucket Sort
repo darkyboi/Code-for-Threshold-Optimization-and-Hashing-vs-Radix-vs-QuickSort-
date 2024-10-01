@@ -1,10 +1,1 @@
-# Hash Table Sorting: Bucket Sort
-def bucket_sort(arr):
-    max_val = max(arr)
-    buckets = [[] for _ in range(max_val + 1)]
-    for num in arr:
-        buckets[num].append(num)
-    sorted_arr = []
-    for bucket in buckets:
-        sorted_arr.extend(sorted(bucket))
-    return sorted_arr
+
