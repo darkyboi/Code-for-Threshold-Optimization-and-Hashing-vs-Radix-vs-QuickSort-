@@ -1,0 +1,11 @@
+#To be used with Insertion Sort
+def hybrid_quicksort(arr, threshold=10):
+    if len(arr) <= threshold:
+        return insertion_sort(arr)
+    else:
+        pivot_index = random.randint(0, len(arr) - 1)
+        pivot = arr[pivot_index]
+        less = [x for x in arr if x < pivot]
+        equal = [x for x in arr if x == pivot]
+        greater = [x for x in arr if x > pivot]
+        return hybrid_quicksort(less, threshold) + equal + hybrid_quicksort(greater, threshold)
