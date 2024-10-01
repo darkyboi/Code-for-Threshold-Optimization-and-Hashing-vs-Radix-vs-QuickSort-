@@ -1,0 +1,5 @@
+def generate_reversed_array(size):
+    # Sorted array
+    sorted_array = list(range(size))
+    reversed_array = sorted_array [::-1]
+    return reversed_array
