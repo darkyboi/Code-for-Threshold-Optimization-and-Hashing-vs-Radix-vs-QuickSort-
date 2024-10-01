@@ -1,0 +1,23 @@
+def collision_sort(arr, probing_method='linear'):
+    table_size = len(arr) * 2  # Double the size to reduce collisions
+    table = [None] * table_size
+
+    # Insert elements into the hash table
+    for num in arr:
+        index = num % table_size
+        k = 0
+        while table[index] is not None:
+            if probing_method == 'linear':
+                index = (index + 1) % table_size
+            elif probing_method == 'quadratic':
+                k += 1
+                index = (index + k * k) % table_size
+        table[index] = num
+
+    # Extract sorted elements from the hash table
+    sorted_arr = []
+    for i in range(table_size):
+        if table[i] is not None:
+            sorted_arr.append(table[i])
+
+    return sorted_arr
