@@ -1,0 +1,50 @@
+def dualpivot_quicksort(arr, left, right):
+    if left < right:
+        # Choosing two pivots randomly
+        pivot_index1 = random.randint(left, right)
+        pivot_index2 = random.randint(left, right)
+
+        # Ensuring different indices for the two pivots
+        while pivot_index1 == pivot_index2:
+            pivot_index2 = random.randint(left, right)
+
+        # Assigning pivots
+        pivot1 = arr[pivot_index1]
+        pivot2 = arr[pivot_index2]
+
+        # Swapping pivots if necessary
+        if pivot1 > pivot2:
+            pivot1, pivot2 = pivot2, pivot1
+
+        # Move pivots to the start and end of the array segment
+        arr[left], arr[pivot_index1] = arr[pivot_index1], arr[left]
+        arr[right], arr[pivot_index2] = arr[pivot_index2], arr[right]
+
+        # Partitioning the array around the pivots
+        low = left + 1
+        high = right - 1
+        i = left + 1
+        while i <= high:
+            if arr[i] < pivot1:
+                arr[i], arr[low] = arr[low], arr[i]
+                low += 1
+            elif arr[i] >= pivot2:
+                while arr[high] > pivot2 and i < high:
+                    high -= 1
+                arr[i], arr[high] = arr[high], arr[i]
+                high -= 1
+                if arr[i] < pivot1:
+                    arr[i], arr[low] = arr[low], arr[i]
+                    low += 1
+            i += 1
+
+        # Swapping pivots into their correct positions
+        arr[left], arr[low - 1] = arr[low - 1], arr[left]
+        arr[right], arr[high + 1] = arr[high + 1], arr[right]
+
+        # Recursively sorting sub-arrays
+        dualpivot_quicksort(arr, left, low - 2)
+        dualpivot_quicksort(arr, low, high)
+        dualpivot_quicksort(arr, high + 2, right)
+
+    return arr
