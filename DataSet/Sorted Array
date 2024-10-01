@@ -1,0 +1,4 @@
+def generate_sorted_array(size):
+    # Sorted array
+    sorted_array = list(range(size))
+    return sorted_array
