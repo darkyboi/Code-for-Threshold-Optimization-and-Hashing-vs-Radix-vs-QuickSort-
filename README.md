@@ -11,5 +11,5 @@ The repository is organized into the following sections:
 
 ## Structure of the Repository
 - `code/`: Contains all the Python scripts for each sorting algorithm, along with the threshold optimization experiments.
-- `data/`: Contains the code to generate datasets used in the paper.
+- `DataSet/`: Contains the code to generate datasets used in the paper.
 - `README.md`: This file, which explains the structure and purpose of the repository.
